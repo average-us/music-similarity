@@ -1,6 +1,6 @@
 import os
 import librosa
-import numpy
+import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
@@ -31,28 +31,28 @@ def extract_features(file_path):
         features = []
 
         mfccs = librosa.feature.mfcc(y=segment, sr=sr, n_mfcc=40)
-        features.extend(numpy.mean(mfccs.T, axis=0))
-        features.extend(numpy.std(mfccs.T, axis=0))
+        features.extend(np.mean(mfccs.T, axis=0))
+        features.extend(np.std(mfccs.T, axis=0))
 
         spectral_centroids = librosa.feature.spectral_centroid(y=segment, sr=sr)
-        features.append(numpy.mean(spectral_centroids))
-        features.append(numpy.std(spectral_centroids))
+        features.append(np.mean(spectral_centroids))
+        features.append(np.std(spectral_centroids))
 
         zero_crossing_rate = librosa.feature.zero_crossing_rate(segment)
-        features.append(numpy.mean(zero_crossing_rate))
-        features.append(numpy.std(zero_crossing_rate))
+        features.append(np.mean(zero_crossing_rate))
+        features.append(np.std(zero_crossing_rate))
 
         chroma = librosa.feature.chroma_stft(y=segment, sr=sr)
-        features.extend(numpy.mean(chroma.T, axis=0))
-        features.extend(numpy.std(chroma.T, axis=0))
+        features.extend(np.mean(chroma.T, axis=0))
+        features.extend(np.std(chroma.T, axis=0))
 
         rms = librosa.feature.rms(y=segment)
-        features.append(numpy.mean(rms))
-        features.append(numpy.std(rms))
+        features.append(np.mean(rms))
+        features.append(np.std(rms))
 
         spectral_bandwidth = librosa.feature.spectral_bandwidth(y=segment, sr=sr)
-        features.append(numpy.mean(spectral_bandwidth))
-        features.append(numpy.std(spectral_bandwidth))
+        features.append(np.mean(spectral_bandwidth))
+        features.append(np.std(spectral_bandwidth))
 
         all_features.append(features)
 
