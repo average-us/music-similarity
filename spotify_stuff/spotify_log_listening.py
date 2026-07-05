@@ -18,6 +18,7 @@ last_progress_ms = None
 last_duration_ms = None
 last_artist_id = None
 last_artist_name = None
+last_explicit = None
 
 
 sp = spotipy.Spotify(
@@ -46,7 +47,7 @@ while True:
         with open("data/listening_log.csv", "a", newline="", encoding="utf-8") as file:
             writer = csv.writer(file)
 
-            writer.writerow([last_track_id, last_track_name, last_artist_id, last_artist_name, last_duration_ms, hour, weekday, completion_percent, skipped])
+            writer.writerow([last_track_id, last_track_name, last_artist_id, last_artist_name, last_explicit, last_duration_ms, hour, weekday, completion_percent, skipped])
     
 
 
@@ -56,5 +57,6 @@ while True:
     last_duration_ms = track["duration_ms"]
     last_artist_id = track["artists"][0]["id"]
     last_artist_name = track["artists"][0]["name"]
+    last_explicit = int(track["explicit"])
 
     time.sleep(5)
