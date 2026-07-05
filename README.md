@@ -1,3 +1,3 @@
-# music-similarity
+# music-projects
 
-Uses the GTZAN Dataset and cosine similarity to find similar songs. Currently a WIP.
+Variety of projects includin genre classification, music similarity, and a personal spotify song recommender (WIP).
