@@ -6,7 +6,7 @@ import librosa
 import numpy as np
 
 DATASET_PATH = "data/genres_original"
-CACHE_FILE = "gtzan_extracted_features.csv"
+CACHE_FILE = "data/gtzan_extracted_features.csv"
 
 def extract_features(file_path):
     try:
