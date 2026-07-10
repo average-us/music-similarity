@@ -24,3 +24,5 @@ data/
 
 .env
 .cache
+
+catboost_info/
